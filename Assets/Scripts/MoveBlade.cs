@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class MoveBlade : MonoBehaviour
 {
     [Header("Movement")]
-    public bool useSideTaps;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float force;
     [SerializeField] private float rotationForce;
