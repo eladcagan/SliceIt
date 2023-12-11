@@ -10,8 +10,6 @@ public class MoveBlade : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float force;
     [SerializeField] private float rotationForce;
-    [SerializeField] private float fireRate;
-    private float lastFire;
 
     [Header("Physics")]
     [SerializeField] private Vector3 maxVelocity;
@@ -22,14 +20,13 @@ public class MoveBlade : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        rb.AddForce((-transform.right * force*2) + Vector3.up* force, ForceMode.Impulse);
+        rb.AddForce((-Vector3.right * force) + Vector3.up * 5, ForceMode.Impulse);
         float zRot = transform.eulerAngles.z;
         if (zRot < 0)
         {
             zRot += 360;
         }
 
-        Debug.Log(zRot);
         rb.AddTorque(transform.forward * rotationForce, ForceMode.Impulse);
     }
 
@@ -42,7 +39,6 @@ public class MoveBlade : MonoBehaviour
             {
                 zRot += 360;
             }
-            Debug.Log(zRot);
             Move();
         }
 
