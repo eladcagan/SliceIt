@@ -11,16 +11,17 @@ public class CutableObject : MonoBehaviour
     [SerializeField]
     private GameObject _rightPart;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Blade"))
+        if (other.collider.CompareTag("Blade"))
         {
-            //_completeModel.GetComponent<Collider>().isTrigger = true;
-            Debug.Log(other.name);
+            _completeModel.GetComponent<Collider>().isTrigger = true;
+            _completeModel.GetComponent<Rigidbody>().useGravity = false;
+            Debug.Log(other.collider.name);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blade"))
         {
@@ -30,8 +31,8 @@ public class CutableObject : MonoBehaviour
             _leftPart.SetActive(true);
             _rightPart.SetActive(true);
             _completeModel.GetComponent<MeshRenderer>().enabled = false;
-            leftrb.AddForce(new Vector3(0, 0, 20));
-            rightrb.AddForce(new Vector3(0, 0, 20));
+            leftrb.AddForce(new Vector3(5, 0, 0));
+            rightrb.AddForce(new Vector3(-5, 0, 0));
         }
     }
 }
