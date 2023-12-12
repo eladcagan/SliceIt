@@ -9,21 +9,23 @@ public class CutableObject : MonoBehaviour
     [SerializeField]
     private float _cutForce;
     private Rigidbody[] _rigidbodies;
+    private Collider _collider;
 
     private void Awake()
     {
         _rigidbodies = GetComponentsInChildren<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(BLADE))
         {
-            for(int i = 0;  i < _rigidbodies.Length; i++)
+            for (int i = 0; i < _rigidbodies.Length; i++)
             {
+                _collider.enabled = false;
                 _rigidbodies[i].isKinematic = false;
-                Debug.Log(Vector3.forward * _cutForce * Mathf.Pow(-1, i));
-                _rigidbodies[i].AddExplosionForce(_cutForce, _rigidbodies[i].position,1);
+                _rigidbodies[i].AddExplosionForce(_cutForce, _rigidbodies[i].position, 1);
             }
         }
     }

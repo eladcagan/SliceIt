@@ -9234,7 +9234,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136385240}
-  m_LocalRotation: {x: 0, y: 0.9252097, z: -0, w: -0.37945622}
+  m_LocalRotation: {x: 0, y: 0.9518088, z: -0, w: -0.30669206}
   m_LocalPosition: {x: -8.573, y: 2.4, z: 9.809999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15179,7 +15179,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036735825}
-  m_LocalRotation: {x: -0, y: 0.9252097, z: -0, w: -0.37945622}
+  m_LocalRotation: {x: -0, y: 0.9518088, z: -0, w: -0.30669206}
   m_LocalPosition: {x: -8.573, y: 2.4, z: 9.809999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15187,7 +15187,7 @@ Transform:
   - {fileID: 477458364}
   m_Father: {fileID: 2079483091}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 224.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 215.72, z: 0}
 --- !u!114 &2036735827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15915,6 +15915,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 547874229}
     m_Modifications:
+    - target: {fileID: 5037986043232706348, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037986043232706349, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037986043232706349, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: m_Center.x
+      value: -0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 5037986043845157952, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
       propertyPath: m_Name
       value: SwordHolder
@@ -15965,7 +15977,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5037986043845157954, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
       propertyPath: _forwardForce.y
-      value: 1.5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037986043845157954, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: _backwardsForce.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037986043845157954, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: _backwardsForce.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037986043845157954, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}
+      propertyPath: _backwardsTorque.z
+      value: -220
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19c468a74c090c4cb3a51886bac3cf5, type: 3}

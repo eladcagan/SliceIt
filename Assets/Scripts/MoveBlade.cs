@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class MoveBlade : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _rigidbody;
+    [SerializeField]
+    private Blade _blade;
+    [SerializeField]
+    private Hilt _hilt;
 
     [Header("Movement")]
     [SerializeField]
@@ -20,6 +25,32 @@ public class MoveBlade : MonoBehaviour
     private Vector3 _forwardTorque;
     [SerializeField]
     private Vector3 _backwardsTorque;
+
+    private void Awake()
+    {
+        _blade.OnBladeHit += OnBladeHit;
+        _hilt.OnHiltHit += OnHiltHit;
+    }
+
+    private void OnHiltHit(string obj)
+    {
+        Debug.Log("OnHiltHit");
+        _rigidbody.isKinematic = false;
+        Jump(-1);
+        Spin(-1);
+    }
+
+    private void OnBladeHit(string hitTag)
+    {
+        if (hitTag.Equals(CUTTABLE))
+        {
+            _rigidbody.isKinematic = false;
+        }
+        else
+        {
+            _rigidbody.isKinematic = true;
+        }
+    }
 
     void FixedUpdate()
     {
@@ -45,7 +76,7 @@ public class MoveBlade : MonoBehaviour
         _rigidbody.AddTorque(spinTorque, ForceMode.Acceleration);
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(CUTTABLE))
         {
@@ -55,5 +86,5 @@ public class MoveBlade : MonoBehaviour
         {
             _rigidbody.isKinematic = true;
         }
-    }
+    }*/
 }
