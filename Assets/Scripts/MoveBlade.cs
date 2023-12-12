@@ -36,8 +36,8 @@ public class MoveBlade : MonoBehaviour
     {
         Debug.Log("OnHiltHit");
         _rigidbody.isKinematic = false;
-        Jump(-1);
-        Spin(-1);
+        Move(-1);
+        Rotate(-1);
     }
 
     private void OnBladeHit(string hitTag)
@@ -45,6 +45,7 @@ public class MoveBlade : MonoBehaviour
         if (hitTag.Equals(CUTTABLE))
         {
             _rigidbody.isKinematic = false;
+            _rigidbody.angularVelocity = Vector3.zero;
         }
         else
         {
@@ -57,34 +58,22 @@ public class MoveBlade : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _rigidbody.isKinematic = false;
-            Jump(1);
-            Spin(1);
+            Move(1);
+            Rotate(1);
         }
     }
 
-    private void Jump(int direction)
+    private void Move(int direction)
     {
-        Vector3 jumpForce = direction == 1 ? _forwardForce : _backwardsForce;
+        Vector3 force = direction == 1 ? _forwardForce : _backwardsForce;
         _rigidbody.velocity = Vector3.zero;
-        _rigidbody.AddForce(jumpForce, ForceMode.Impulse);
+        _rigidbody.AddForce(force, ForceMode.Impulse);
     }
 
-    private void Spin(int direction)
+    private void Rotate(int direction)
     {
-        Vector3 spinTorque = direction == 1 ? _forwardTorque : _backwardsTorque;
+        Vector3 torque = direction == 1 ? _forwardTorque : _backwardsTorque;
         _rigidbody.angularVelocity = Vector3.zero;
-        _rigidbody.AddTorque(spinTorque, ForceMode.Acceleration);
+        _rigidbody.AddTorque(torque, ForceMode.Acceleration);
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(CUTTABLE))
-        {
-            _rigidbody.isKinematic = false;
-        }
-        else
-        {
-            _rigidbody.isKinematic = true;
-        }
-    }*/
 }

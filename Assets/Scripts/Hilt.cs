@@ -9,7 +9,6 @@ public class Hilt : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         OnHiltHit?.Invoke(other.tag);
     }
 }
