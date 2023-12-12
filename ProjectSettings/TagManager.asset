@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blade
+  - Hilt
+  - Cuttable
   layers:
   - Default
   - TransparentFX

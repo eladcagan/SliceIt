@@ -5,42 +5,55 @@ using UnityEngine.EventSystems;
 
 public class MoveBlade : MonoBehaviour
 {
+
+    private const string CUTTABLE = "Cuttable";
+
+    [SerializeField]
+    private Rigidbody _rigidbody;
+
     [Header("Movement")]
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float force;
-    [SerializeField] private float rotationForce;
-
-    [Header("Physics")]
-    [SerializeField] private Vector3 maxVelocity;
-    [SerializeField] private float maxAngularVelocity;
-    [SerializeField] private Vector2 minMaxAngleToFlip;
-
-    private void Move()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.AddForce((-Vector3.right * force) + Vector3.up * 5, ForceMode.Impulse);
-        float zRot = transform.eulerAngles.z;
-        if (zRot < 0)
-        {
-            zRot += 360;
-        }
-
-        rb.AddTorque(transform.forward * rotationForce, ForceMode.Impulse);
-    }
+    [SerializeField]
+    private Vector3 _forwardForce;
+    [SerializeField]
+    private Vector3 _backwardsForce;
+    [SerializeField]
+    private Vector3 _forwardTorque;
+    [SerializeField]
+    private Vector3 _backwardsTorque;
 
     void FixedUpdate()
     {
         if (Input.GetMouseButton(0))
         {
-            float zRot = transform.eulerAngles.z;
-            if (zRot < 0)
-            {
-                zRot += 360;
-            }
-            Move();
+            _rigidbody.isKinematic = false;
+            Jump(1);
+            Spin(1);
         }
+    }
 
-        rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxVelocity.x, maxVelocity.x), Mathf.Clamp(rb.velocity.y, -maxVelocity.y, maxVelocity.y), 0);
+    private void Jump(int direction)
+    {
+        Vector3 jumpForce = direction == 1 ? _forwardForce : _backwardsForce;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.AddForce(jumpForce, ForceMode.Impulse);
+    }
+
+    private void Spin(int direction)
+    {
+        Vector3 spinTorque = direction == 1 ? _forwardTorque : _backwardsTorque;
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.AddTorque(spinTorque, ForceMode.Acceleration);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(CUTTABLE))
+        {
+            _rigidbody.isKinematic = false;
+        }
+        else
+        {
+            _rigidbody.isKinematic = true;
+        }
     }
 }

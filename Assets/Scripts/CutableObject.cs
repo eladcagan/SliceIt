@@ -4,35 +4,27 @@ using UnityEngine;
 
 public class CutableObject : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _completeModel;
-    [SerializeField]
-    private GameObject _leftPart;
-    [SerializeField]
-    private GameObject _rightPart;
+    private const string BLADE = "Blade";
 
-    private void OnCollisionEnter(Collision other)
+    [SerializeField]
+    private float _cutForce;
+    private Rigidbody[] _rigidbodies;
+
+    private void Awake()
     {
-        if (other.collider.CompareTag("Blade"))
-        {
-            _completeModel.GetComponent<Collider>().isTrigger = true;
-            _completeModel.GetComponent<Rigidbody>().useGravity = false;
-            Debug.Log(other.collider.name);
-        }
+        _rigidbodies = GetComponentsInChildren<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Blade"))
+        if (other.CompareTag(BLADE))
         {
-
-            var leftrb = _leftPart.GetComponent<Rigidbody>();
-            var rightrb = _rightPart.GetComponent<Rigidbody>();
-            _leftPart.SetActive(true);
-            _rightPart.SetActive(true);
-            _completeModel.GetComponent<MeshRenderer>().enabled = false;
-            leftrb.AddForce(new Vector3(5, 0, 0));
-            rightrb.AddForce(new Vector3(-5, 0, 0));
+            for(int i = 0;  i < _rigidbodies.Length; i++)
+            {
+                _rigidbodies[i].isKinematic = false;
+                Debug.Log(Vector3.forward * _cutForce * Mathf.Pow(-1, i));
+                _rigidbodies[i].AddExplosionForce(_cutForce, _rigidbodies[i].position,1);
+            }
         }
     }
 }
