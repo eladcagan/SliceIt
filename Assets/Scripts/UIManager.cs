@@ -8,6 +8,11 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _scoreText;
+    [SerializeField]
+    private GameObject WinPanel;
+    [SerializeField]
+    private GameObject LosePanel;
+
     internal void UpdateScore(int score)
     {
         _scoreText.text = score.ToString();
