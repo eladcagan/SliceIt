@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
             UnregisterSwordEvents();
             _currentLevel.transform.position = new Vector3(1000, 1000, 1000); // Move the level off screen to be destroyed
-            Destroy(_currentLevel);
+            Destroy(_currentLevel.gameObject);
         }
     }
 
