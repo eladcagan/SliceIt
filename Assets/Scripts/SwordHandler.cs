@@ -61,6 +61,7 @@ public class SwordHandler : MonoBehaviour
                 OnBladeHitGround?.Invoke();
                 break;
             case Constants.FINISH:
+                Debug.Log("FinishLineReached");
                 _rigidbody.isKinematic = true;
                 var multiplier = collider.GetComponent<Finish>().Multiplier;
                 OnBladeFinish?.Invoke(multiplier);
