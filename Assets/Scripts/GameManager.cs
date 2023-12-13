@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         _sword.IsGameInProgress = false;
         _playerScore *= multiplier;
         _uiManager.UpdateScore(_playerScore);
-        if (_currentLevelIndex + 1 <= _levels.Count)
+        if (_currentLevelIndex + 1 < _levels.Count)
         {
             LevelFinished();
         }

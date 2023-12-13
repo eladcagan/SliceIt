@@ -34,7 +34,8 @@ public class CutableObject : MonoBehaviour
             {
                 _collider.enabled = false;
                 _rigidbodies[i].isKinematic = false;
-                _rigidbodies[i].AddExplosionForce(_cutForce, _rigidbodies[i].position, 1);
+                //_rigidbodies[i].AddExplosionForce(_cutForce, _rigidbodies[i].position, 1);
+                _rigidbodies[i].AddForce(Vector3.forward * _cutForce * Mathf.Pow(-1,i), ForceMode.Impulse);
             }
         }
     }

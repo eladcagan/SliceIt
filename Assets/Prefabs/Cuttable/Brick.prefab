@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d816ad139f0df3a48b6c309764b16b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cutForce: 250
+  _cutValue: 1
+  _cutForce: 400
 --- !u!1 &6045707839620466867
 GameObject:
   m_ObjectHideFlags: 0
