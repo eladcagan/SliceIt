@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveBlade : MonoBehaviour
+public class SwordHandler : MonoBehaviour
 {
-
-    private const string CUTTABLE = "Cuttable";
-
     [SerializeField]
     private Rigidbody _rigidbody;
     [SerializeField]
@@ -26,6 +23,11 @@ public class MoveBlade : MonoBehaviour
     [SerializeField]
     private Vector3 _backwardsTorque;
 
+    public Action<int> OnBladeCut;
+    public Action<int> OnBladeFinish;
+    public Action OnBladeHitGround;
+
+
     private void Awake()
     {
         _blade.OnBladeHit += OnBladeHit;
@@ -34,22 +36,39 @@ public class MoveBlade : MonoBehaviour
 
     private void OnHiltHit(string obj)
     {
-        Debug.Log("OnHiltHit");
         _rigidbody.isKinematic = false;
         Move(-1);
         Rotate(-1);
     }
 
-    private void OnBladeHit(string hitTag)
+    private void OnBladeHit(Collider collider)
     {
-        if (hitTag.Equals(CUTTABLE))
+        var tag = collider.tag;
+        switch (tag)
         {
-            _rigidbody.isKinematic = false;
-            _rigidbody.angularVelocity = Vector3.zero;
-        }
-        else
-        {
-            _rigidbody.isKinematic = true;
+            case Constants.CUTTABLE:
+                _rigidbody.isKinematic = false;
+                _rigidbody.angularVelocity = Vector3.zero;
+                var cuttable = collider.GetComponent<CutableObject>();
+                if (cuttable != null)
+                {
+                    var score = cuttable.CutValue;
+                    OnBladeCut?.Invoke(score);
+                }
+                break;
+            case Constants.GROUND:
+                _rigidbody.isKinematic = true;
+                OnBladeHitGround?.Invoke();
+                break;
+            case Constants.FINISH:
+                _rigidbody.isKinematic = true;
+                var multiplier = collider.GetComponent<Finish>().Multiplier;
+                OnBladeFinish?.Invoke(multiplier);
+                break;
+            default:
+                _rigidbody.isKinematic = true;
+                _rigidbody.angularVelocity = Vector3.zero;
+                break;
         }
     }
 

@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class CutableObject : MonoBehaviour
 {
-    private const string BLADE = "Blade";
+    [SerializeField]
+    private int _cutValue;
+
+    public int CutValue
+    {
+        get
+        {
+            return _cutValue;
+        }
+    }
 
     [SerializeField]
     private float _cutForce;
@@ -19,7 +28,7 @@ public class CutableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(BLADE))
+        if (other.CompareTag(Constants.BLADE))
         {
             for (int i = 0; i < _rigidbodies.Length; i++)
             {

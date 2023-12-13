@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    public Action<string> OnBladeHit;
+    public Action<Collider> OnBladeHit; // TODO: Is passing collider cost effective?
 
     private void OnTriggerEnter(Collider other)
     {
-        OnBladeHit?.Invoke(other.tag);
+        OnBladeHit?.Invoke(other);
     }
 }
