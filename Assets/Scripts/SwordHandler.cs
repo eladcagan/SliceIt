@@ -30,8 +30,6 @@ public class SwordHandler : MonoBehaviour
     public Action<int> OnBladeCut;
     public Action<int> OnBladeFinish;
     public Action OnBladeHitGround;
-    
-
 
     private void Awake()
     {
@@ -82,7 +80,7 @@ public class SwordHandler : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if(gameState != GameStates.InProgress)
         {

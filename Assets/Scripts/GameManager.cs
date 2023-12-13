@@ -24,10 +24,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _currentLevelIndex = 0;
+        RegisterUIEvents();
+        RestartGame();
+    }
+
+    private void RegisterUIEvents()
+    {
         _uiManager.OnNextLevelClicked += LoadNextLevel;
         _uiManager.OnTryAgainClicked += RestartLevel;
         _uiManager.OnRestartGameClicked += RestartGame;
-        RestartGame();
     }
 
     private void RestartGame()
