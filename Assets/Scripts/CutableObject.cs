@@ -6,7 +6,10 @@ public class CutableObject : MonoBehaviour
 {
     [SerializeField]
     private int _cutValue;
-     public int CutValue
+    [SerializeField]
+    private ParticleSystem _cutPS;
+
+    public int CutValue
     {
         get
         {
@@ -33,6 +36,7 @@ public class CutableObject : MonoBehaviour
             {
                 _collider.enabled = false;
                 part.isKinematic = false;
+                _cutPS.Play();
                 part.AddExplosionForce(_cutForce, part.position, 1);
             }
         }

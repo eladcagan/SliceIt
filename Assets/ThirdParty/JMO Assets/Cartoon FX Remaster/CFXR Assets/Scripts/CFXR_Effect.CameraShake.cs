@@ -160,6 +160,8 @@ namespace CartoonFX
 				{
 					camerasPreRenderPosition[cam] = cam.transform.localPosition;
 
+					if (Time.timeScale <= 0) return;
+
 					switch (shakeSpace)
 					{
 						case ShakeSpace.Screen: cam.transform.localPosition += cam.transform.rotation * shakeVector; break;
