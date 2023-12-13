@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,11 +24,44 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _currentLevelIndex = 0;
+        _uiManager.OnNextLevelClicked += LoadNextLevel;
+        _uiManager.OnTryAgainClicked += RestartLevel;
+        _uiManager.OnRestartGameClicked += RestartGame;
+        RestartGame();
+    }
+
+    private void RestartGame()
+    {
+        _currentLevelIndex = 0;
+        RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        if(_currentLevel != null)
+        {
+            _currentLevel.transform.position = new Vector3(1000, 1000, 1000);
+            DestroyImmediate(_currentLevel);
+        }
+
         LoadLevel();
+    }
+
+    private void LoadNextLevel()
+    {
+        if (_currentLevel != null)
+        {
+            _currentLevel.transform.position = new Vector3(1000, 1000, 1000);
+            DestroyImmediate(_currentLevel);
+        }
+
+        _currentLevelIndex++;
+            LoadLevel();
     }
 
     private void LoadLevel()
     {
+        Debug.Log(_currentLevelIndex);
         var level = _levels[_currentLevelIndex];
         _currentLevel = Instantiate(level, _levelAnchor);
         InitializeLevel(_currentLevel.StartAnchor);
@@ -41,13 +75,22 @@ public class GameManager : MonoBehaviour
         _sword.OnBladeHitGround += OnBladeHitGround;
         _cmCamera.Follow = _sword.transform;
         _cmCamera.LookAt = _sword.transform;
+        _sword.IsGameInProgress = true;
     }
 
     private void OnBladeFinish(int multiplier)
     {
+        _sword.IsGameInProgress = false;
         _playerScore *= multiplier;
         _uiManager.UpdateScore(_playerScore);
-        LevelFinished();
+        if (_currentLevelIndex + 1 <= _levels.Count)
+        {
+            LevelFinished();
+        }
+        else
+        {
+            AllLevelsFinished();
+        }
     }
 
     private void OnBladeHitGround()
@@ -58,6 +101,11 @@ public class GameManager : MonoBehaviour
     private void LevelFinished()
     {
         _uiManager.OpenLevelFinishMenu();
+    }
+
+    private void AllLevelsFinished()
+    {
+        _uiManager.OpenComingSoon();
     }
 
     private void Lose()

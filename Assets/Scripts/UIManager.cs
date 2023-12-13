@@ -12,18 +12,29 @@ public class UIManager : MonoBehaviour
     private GameObject WinPanel;
     [SerializeField]
     private GameObject LosePanel;
+    [SerializeField]
+    private GameObject ComingSoonPanel;
 
     public Action OnNextLevelClicked;
     public Action OnTryAgainClicked;
+    public Action OnRestartGameClicked;
 
     public void OnNextLevel()
     {
         OnNextLevelClicked?.Invoke();
+        WinPanel.SetActive(false);
     }
 
     public void OnTryAgain()
     {
         OnTryAgainClicked?.Invoke();
+        LosePanel.SetActive(false);
+    }
+
+    public void OnComingSoon()
+    {
+        OnRestartGameClicked?.Invoke();
+        ComingSoonPanel.SetActive(false);
     }
 
     internal void UpdateScore(int score)
@@ -39,5 +50,9 @@ public class UIManager : MonoBehaviour
     internal void OpenLevelFinishMenu()
     {
         WinPanel.SetActive(true);
+    }
+    public void OpenComingSoon()
+    {
+        ComingSoonPanel.SetActive(true);
     }
 }

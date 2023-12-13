@@ -26,6 +26,7 @@ public class SwordHandler : MonoBehaviour
     public Action<int> OnBladeCut;
     public Action<int> OnBladeFinish;
     public Action OnBladeHitGround;
+    public bool IsGameInProgress;
 
 
     private void Awake()
@@ -43,6 +44,11 @@ public class SwordHandler : MonoBehaviour
 
     private void OnBladeHit(Collider collider)
     {
+        if (!IsGameInProgress)
+        {
+            return;
+        }
+
         var tag = collider.tag;
         switch (tag)
         {
@@ -74,6 +80,11 @@ public class SwordHandler : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!IsGameInProgress)
+        {
+            return;
+        }
+
         if (Input.GetMouseButton(0))
         {
             _rigidbody.isKinematic = false;
