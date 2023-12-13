@@ -13,6 +13,19 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject LosePanel;
 
+    public Action OnNextLevelClicked;
+    public Action OnTryAgainClicked;
+
+    public void OnNextLevel()
+    {
+        OnNextLevelClicked?.Invoke();
+    }
+
+    public void OnTryAgain()
+    {
+        OnTryAgainClicked?.Invoke();
+    }
+
     internal void UpdateScore(int score)
     {
         _scoreText.text = score.ToString();
@@ -20,11 +33,11 @@ public class UIManager : MonoBehaviour
 
     internal void OpenGameOverMenu()
     {
-        throw new NotImplementedException();
+        LosePanel.SetActive(true);
     }
 
     internal void OpenLevelFinishMenu()
     {
-        throw new NotImplementedException();
+        WinPanel.SetActive(true);
     }
 }

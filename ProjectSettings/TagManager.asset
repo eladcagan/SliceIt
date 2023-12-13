@@ -8,6 +8,8 @@ TagManager:
   - Hilt
   - Cuttable
   - Ground
+  - Bomb
+  - PowerUp
   layers:
   - Default
   - TransparentFX
