@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2467068034449674510}
   - component: {fileID: 4376852897391823300}
   - component: {fileID: 6804083265047292150}
+  - component: {fileID: 6452730772523988108}
   m_Layer: 0
   m_Name: cake_p1
   m_TagString: Cuttable
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6600298147023153824, guid: 84510a2da212713469fbbf20934594d4, type: 3}
-  - {fileID: 688385715164636043, guid: 84510a2da212713469fbbf20934594d4, type: 3}
+  - {fileID: 2100000, guid: c1618f6e1ecfdb64e878fc1e330e7692, type: 2}
+  - {fileID: 2100000, guid: eb60d44df1463ed4ca66868fb8579c41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,6 +102,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &6452730772523988108
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958258938964656988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6566284079571059066, guid: 84510a2da212713469fbbf20934594d4, type: 3}
 --- !u!1 &4793346514404841747
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6600298147023153824, guid: 84510a2da212713469fbbf20934594d4, type: 3}
+  - {fileID: 2100000, guid: c1618f6e1ecfdb64e878fc1e330e7692, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,6 +243,7 @@ GameObject:
   - component: {fileID: 952584180558829373}
   - component: {fileID: 5007398156165956227}
   - component: {fileID: 1167160405746745752}
+  - component: {fileID: 485837215752577451}
   m_Layer: 0
   m_Name: cake_p2
   m_TagString: Cuttable
@@ -278,8 +294,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6600298147023153824, guid: 84510a2da212713469fbbf20934594d4, type: 3}
-  - {fileID: 688385715164636043, guid: 84510a2da212713469fbbf20934594d4, type: 3}
+  - {fileID: 2100000, guid: c1618f6e1ecfdb64e878fc1e330e7692, type: 2}
+  - {fileID: 2100000, guid: eb60d44df1463ed4ca66868fb8579c41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -317,3 +333,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &485837215752577451
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333584692067094570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8832954712492577978, guid: 84510a2da212713469fbbf20934594d4, type: 3}

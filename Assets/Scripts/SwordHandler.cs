@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using Enums;
 
 public class SwordHandler : MonoBehaviour
 {
@@ -22,11 +20,17 @@ public class SwordHandler : MonoBehaviour
     private Vector3 _forwardTorque;
     [SerializeField]
     private Vector3 _backwardsTorque;
+    [HideInInspector]
+    public GameStates gameState
+    {
+        set;
+        private get;
+    }
 
     public Action<int> OnBladeCut;
     public Action<int> OnBladeFinish;
     public Action OnBladeHitGround;
-    public bool IsGameInProgress;
+    
 
 
     private void Awake()
@@ -44,7 +48,7 @@ public class SwordHandler : MonoBehaviour
 
     private void OnBladeHit(Collider collider)
     {
-        if (!IsGameInProgress)
+        if (gameState != GameStates.InProgress)
         {
             return;
         }
@@ -80,7 +84,7 @@ public class SwordHandler : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!IsGameInProgress)
+        if(gameState != GameStates.InProgress)
         {
             return;
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4886021850017300791}
   - component: {fileID: 1736660707723773072}
   - component: {fileID: 8961861227877992052}
+  - component: {fileID: 1255455792478871272}
   m_Layer: 0
   m_Name: watermelon_p2
   m_TagString: Cuttable
@@ -101,6 +102,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &1255455792478871272
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617326532584599219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7777682792588770433, guid: c85cdbf05e2c792478d44906fa842ffc, type: 3}
 --- !u!1 &2860945391098208564
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +243,7 @@ GameObject:
   - component: {fileID: 6906863587360144362}
   - component: {fileID: 1554393726986537401}
   - component: {fileID: 3267633397354843829}
+  - component: {fileID: 5755154621619534883}
   m_Layer: 0
   m_Name: watermelon_p1
   m_TagString: Cuttable
@@ -317,3 +333,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &5755154621619534883
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7481413081521487707}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7475985165828635899, guid: c85cdbf05e2c792478d44906fa842ffc, type: 3}

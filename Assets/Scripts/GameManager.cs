@@ -1,7 +1,7 @@
 using Cinemachine;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,35 +33,35 @@ public class GameManager : MonoBehaviour
     private void RestartGame()
     {
         _currentLevelIndex = 0;
+        _playerScore = 0;
         RestartLevel();
     }
 
     private void RestartLevel()
     {
-        if(_currentLevel != null)
-        {
-            _currentLevel.transform.position = new Vector3(1000, 1000, 1000);
-            DestroyImmediate(_currentLevel);
-        }
-
+        ClearLevel();
         LoadLevel();
     }
 
     private void LoadNextLevel()
     {
+        ClearLevel();
+        _currentLevelIndex++;
+        LoadLevel();
+    }
+
+    private void ClearLevel()
+    {
         if (_currentLevel != null)
         {
-            _currentLevel.transform.position = new Vector3(1000, 1000, 1000);
-            DestroyImmediate(_currentLevel);
+            UnregisterSwordEvents();
+            _currentLevel.transform.position = new Vector3(1000, 1000, 1000); // Move the level off screen to be destroyed
+            Destroy(_currentLevel);
         }
-
-        _currentLevelIndex++;
-            LoadLevel();
     }
 
     private void LoadLevel()
     {
-        Debug.Log(_currentLevelIndex);
         var level = _levels[_currentLevelIndex];
         _currentLevel = Instantiate(level, _levelAnchor);
         InitializeLevel(_currentLevel.StartAnchor);
@@ -70,17 +70,15 @@ public class GameManager : MonoBehaviour
     private void InitializeLevel(Transform startAnchor)
     {
         _sword = Instantiate(_swordHandlerPrefab, startAnchor);
-        _sword.OnBladeCut += OnBladeCut;
-        _sword.OnBladeFinish += OnBladeFinish;
-        _sword.OnBladeHitGround += OnBladeHitGround;
+        RegisterSwordEvents();
         _cmCamera.Follow = _sword.transform;
         _cmCamera.LookAt = _sword.transform;
-        _sword.IsGameInProgress = true;
+        _sword.gameState = GameStates.InProgress;
     }
 
     private void OnBladeFinish(int multiplier)
     {
-        _sword.IsGameInProgress = false;
+        _sword.gameState = GameStates.LevelEnd;
         _playerScore *= multiplier;
         _uiManager.UpdateScore(_playerScore);
         if (_currentLevelIndex + 1 < _levels.Count)
@@ -110,6 +108,7 @@ public class GameManager : MonoBehaviour
 
     private void Lose()
     {
+        _sword.gameState = GameStates.GameEnd;
         _uiManager.OpenGameOverMenu();
     }
 
@@ -117,5 +116,19 @@ public class GameManager : MonoBehaviour
     {
         _playerScore += score;
         _uiManager.UpdateScore(_playerScore);
+    }
+
+    private void RegisterSwordEvents()
+    {
+        _sword.OnBladeCut += OnBladeCut;
+        _sword.OnBladeFinish += OnBladeFinish;
+        _sword.OnBladeHitGround += OnBladeHitGround;
+    }
+
+    private void UnregisterSwordEvents()
+    {
+        _sword.OnBladeCut -= OnBladeCut;
+        _sword.OnBladeFinish -= OnBladeFinish;
+        _sword.OnBladeHitGround -= OnBladeHitGround;
     }
 }
