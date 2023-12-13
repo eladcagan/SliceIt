@@ -37,11 +37,18 @@ public class SwordHandler : MonoBehaviour
         _hilt.OnHiltHit += OnHiltHit;
     }
 
-    private void OnHiltHit(string obj)
+    private void OnHiltHit(string tag)
     {
-        _rigidbody.isKinematic = false;
-        Move(-1);
-        Rotate(-1);
+        if (tag.Equals(Constants.GROUND))
+        {
+            OnGroundHit();
+        }
+        else
+        {
+            _rigidbody.isKinematic = false;
+            Move(-1);
+            Rotate(-1);
+        }
     }
 
     private void OnBladeHit(Collider collider)
@@ -65,8 +72,7 @@ public class SwordHandler : MonoBehaviour
                 }
                 break;
             case Constants.GROUND:
-                _rigidbody.isKinematic = true;
-                OnBladeHitGround?.Invoke();
+                OnGroundHit();
                 break;
             case Constants.FINISH:
                 _rigidbody.isKinematic = true;
@@ -78,6 +84,12 @@ public class SwordHandler : MonoBehaviour
                 _rigidbody.angularVelocity = Vector3.zero;
                 break;
         }
+    }
+
+    private void OnGroundHit()
+    {
+        _rigidbody.isKinematic = true;
+        OnBladeHitGround?.Invoke();
     }
 
     private void FixedUpdate()
