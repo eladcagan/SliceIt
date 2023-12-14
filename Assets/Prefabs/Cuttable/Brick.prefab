@@ -25,15 +25,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2986980359863113817}
-  m_LocalRotation: {x: -0.6532815, y: 0.27059805, z: -0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.24878973, y: -0.661894, z: 0.661894, w: 0.24878973}
+  m_LocalPosition: {x: 0, y: 0, z: 0.054}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5640469219663291304}
   m_Father: {fileID: 2351029149490015933}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -45, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: -228.8, y: 90, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 1
   _cutPS: {fileID: 2991956863984254778}
+  _scoreText: {fileID: 2856314623335681851}
   _cutForce: 400
 --- !u!1 &6045707839620466867
 GameObject:

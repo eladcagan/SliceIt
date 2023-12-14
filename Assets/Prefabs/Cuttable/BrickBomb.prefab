@@ -145,8 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d816ad139f0df3a48b6c309764b16b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cutValue: 1
+  _cutValue: 0
   _cutPS: {fileID: 550252455663152976}
+  _scoreText: {fileID: 2856314623335681851}
   _cutForce: 1000
 --- !u!1 &6045707839620466867
 GameObject:
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

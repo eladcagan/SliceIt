@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CuttableObject
@@ -9,6 +9,8 @@ public class CuttableObject
     private int _cutValue;
     [SerializeField]
     private ParticleSystem _cutPS;
+    [SerializeField]
+    private TextMeshProUGUI _scoreText;
 
     public int CutValue
     {
@@ -33,13 +35,24 @@ public class CuttableObject
     {
         if (other.CompareTag(Constants.BLADE))
         {
-            foreach(var part in _rigidbodies)
+            foreach (var part in _rigidbodies)
             {
                 _collider.enabled = false;
                 part.isKinematic = false;
                 _cutPS.Play();
+                if (_cutValue > 0)
+                {
+                    _scoreText.text = "+" + _cutValue.ToString();
+                    StartCoroutine(TextDelay(0.75f));
+                }
                 part.AddExplosionForce(_cutForce, part.position, 1);
             }
         }
+    }
+
+    private IEnumerator TextDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _scoreText.gameObject.SetActive(false);
     }
 }
