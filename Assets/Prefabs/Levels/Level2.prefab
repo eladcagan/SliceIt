@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7630431195646501294}
   - component: {fileID: 3623891544425508860}
   - component: {fileID: 7433534900837455537}
+  - component: {fileID: 125264610670869219}
   m_Layer: 0
   m_Name: Podium (1)
   m_TagString: Untagged
@@ -130,6 +131,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &125264610670869219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077514420418510202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1077514420766725269
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +157,7 @@ GameObject:
   - component: {fileID: 7630431195265697857}
   - component: {fileID: 3623891545151276563}
   - component: {fileID: 7433534901454651230}
+  - component: {fileID: 8453025840962900590}
   m_Layer: 0
   m_Name: Podium (2)
   m_TagString: Untagged
@@ -255,6 +270,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8453025840962900590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077514420766725269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2759703133591489958
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +296,7 @@ GameObject:
   - component: {fileID: 4709861919781458290}
   - component: {fileID: 1941844050850160416}
   - component: {fileID: 5733449921085154925}
+  - component: {fileID: 3901771043393381842}
   m_Layer: 0
   m_Name: Podium (3)
   m_TagString: Untagged
@@ -369,6 +398,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3901771043393381842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759703133591489958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3340085515843024099
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!1 &3340085516333687974
 GameObject:
@@ -933,6 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!1 &3340085516363199095
 GameObject:
@@ -1097,6 +1141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!65 &3340085516613183128
 BoxCollider:
@@ -1730,6 +1775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!65 &3340085517349588613
 BoxCollider:
@@ -1967,6 +2013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!1 &3340085517710546074
 GameObject:
@@ -2030,6 +2077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutValue: 0
   _cutPS: {fileID: 0}
+  _scoreText: {fileID: 0}
   _cutForce: 0
 --- !u!1 &3340085517824749392
 GameObject:
@@ -2423,6 +2471,7 @@ GameObject:
   - component: {fileID: 1560390660177460505}
   - component: {fileID: 5623172530700383051}
   - component: {fileID: 1975421266454497798}
+  - component: {fileID: 1396529311745598845}
   m_Layer: 0
   m_Name: Podium
   m_TagString: Untagged
@@ -2535,6 +2584,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1396529311745598845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266139547696406989}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3340085515867673403
 PrefabInstance:
   m_ObjectHideFlags: 0

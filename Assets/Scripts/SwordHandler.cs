@@ -51,6 +51,11 @@ public class SwordHandler : MonoBehaviour
 
     private void HandleHiltHit(string tag)
     {
+        if (gameState != GameStates.InProgress)
+        {
+            return;
+        }
+
         if (tag.Equals(Constants.GROUND))
         {
             OnGroundHit();

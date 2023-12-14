@@ -65,6 +65,6 @@ public class CuttableObject : MonoBehaviour
     private IEnumerator TagDelay(Collider col, float delay)
     {
         yield return new WaitForSeconds(delay);
-        col.tag = "Untagged";
+        //col.tag = "Untagged";
     }
 }
