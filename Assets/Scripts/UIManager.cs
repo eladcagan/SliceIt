@@ -56,7 +56,6 @@ public class UIManager : MonoBehaviour
         StartCoroutine(DelayPopUp(WinPanel));
     }
     
-
     private IEnumerator DelayPopUp(GameObject Popup)
     {
         yield return new WaitForSeconds(1f);

@@ -26,8 +26,6 @@ public class CuttableObject : MonoBehaviour
         }
     }
 
-  
-
     private void Awake()
     {
         _rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -58,5 +56,4 @@ public class CuttableObject : MonoBehaviour
         yield return new WaitForSeconds(delay);
         _scoreText.gameObject.SetActive(false);
     }
-
 }

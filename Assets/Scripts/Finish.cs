@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    
     [SerializeField]
     private int _multiplier;
     [SerializeField]

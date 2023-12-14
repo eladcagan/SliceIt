@@ -24,7 +24,6 @@ public class SoundManager : MonoBehaviour
     private AudioClip _FinishLineSFX;
     [SerializeField]
     private AudioSource _source;
-   
 
     private void Start()
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    public Action<Collider> OnBladeHit; // TODO: Is passing collider cost effective?
+    public Action<Collider> OnBladeHit; 
 
     private void OnTriggerEnter(Collider other)
     {

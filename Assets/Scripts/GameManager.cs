@@ -180,5 +180,6 @@ public class GameManager : MonoBehaviour
         _sword.OnBombHit += OnBombHit;
         _sword.OnPowerupHit += OnPowerupHit;
         _sword.OnSwordMove -= OnSwordMove;
+        _sword.OnHiltHit -= OnHiltHit;
     }
 }
