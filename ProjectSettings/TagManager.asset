@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Bomb
   - PowerUp
+  - FxTemporaire
+  - BadPowerUp
   layers:
   - Default
   - TransparentFX

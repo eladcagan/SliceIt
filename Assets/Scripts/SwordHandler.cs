@@ -23,6 +23,8 @@ public class SwordHandler : MonoBehaviour
     private Vector3 _backwardsTorque;
     [SerializeField]
     private float _brickBombMultiplier;
+    [SerializeField]
+    private float _powerUpMultiplier;
     [HideInInspector]
     public GameStates gameState
     {
@@ -50,7 +52,6 @@ public class SwordHandler : MonoBehaviour
         {
             _rigidbody.isKinematic = false;
             Move(-1);
-            Rotate(-1);
         }
     }
 
@@ -67,19 +68,25 @@ public class SwordHandler : MonoBehaviour
             case Constants.CUTTABLE:
                 _rigidbody.isKinematic = false;
                 _rigidbody.angularVelocity = Vector3.zero;
-                var cuttable = collider.GetComponent<CutableObject>();
+                var cuttable = collider.GetComponent<CuttableObject>();
                 if (cuttable != null)
                 {
                     var score = cuttable.CutValue;
                     OnBladeCut?.Invoke(score);
                 }
+
                 break;
             case Constants.GROUND:
                 OnGroundHit();
                 break;
             case Constants.BOMB:
                 Move(0);
-                Rotate(0);
+                break;
+            case Constants.POWERUP:
+                HandlePowerUp(_powerUpMultiplier);
+                break;
+            case Constants.BADPOWERUP:
+                HandlePowerUp(1/_powerUpMultiplier);
                 break;
             case Constants.FINISH:
                 _rigidbody.isKinematic = true;
@@ -91,6 +98,11 @@ public class SwordHandler : MonoBehaviour
                 _rigidbody.angularVelocity = Vector3.zero;
                 break;
         }
+    }
+
+    private void HandlePowerUp(float powerUpMultiplier)
+    {
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * powerUpMultiplier, transform.localScale.z);
     }
 
     private void OnGroundHit()
@@ -110,44 +122,31 @@ public class SwordHandler : MonoBehaviour
         {
             _rigidbody.isKinematic = false;
             Move(1);
-            Rotate(1);
         }
     }
 
     private void Move(int direction)
     {
         Vector3 force = Vector3.zero;
+        Vector3 torque = Vector3.zero;
+
         switch (direction)
         {
             case -1:
                 force = _backwardsForce;
+                torque = _backwardsTorque;
                 break;
             case 0:
-                force = _backwardsForce * 3;
+                force = _backwardsForce * _brickBombMultiplier;
+                torque = _backwardsTorque * _brickBombMultiplier;
                 break;
             case 1:
                 force = _forwardForce;
+                torque = _forwardTorque;
                 break;
         }
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(force, ForceMode.Impulse);
-    }
-
-    private void Rotate(int direction)
-    {
-        Vector3 torque = Vector3.zero;
-        switch (direction)
-        {
-            case -1:
-                torque = _backwardsTorque;
-                break;
-            case 0:
-                torque = _backwardsTorque * _brickBombMultiplier;
-                break;
-            case 1:
-                torque = _forwardTorque;
-                break;
-        }
         _rigidbody.angularVelocity = Vector3.zero;
         _rigidbody.AddTorque(torque, ForceMode.Acceleration);
     }

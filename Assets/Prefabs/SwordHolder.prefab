@@ -263,6 +263,7 @@ MonoBehaviour:
   _forwardTorque: {x: 0, y: 0, z: 540}
   _backwardsTorque: {x: 0, y: 0, z: 270}
   _brickBombMultiplier: 3
+  _powerUpMultiplier: 2
 --- !u!1 &5037986044369839565
 GameObject:
   m_ObjectHideFlags: 0
