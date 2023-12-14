@@ -168,8 +168,6 @@ public class GameManager : MonoBehaviour
         _sword.OnHiltHit += OnHiltHit;
     }
 
-    
-
     private void UnregisterSwordEvents()
     {
         _sword.OnBladeCut -= OnBladeCut;

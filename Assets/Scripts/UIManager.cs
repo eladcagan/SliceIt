@@ -36,6 +36,10 @@ public class UIManager : MonoBehaviour
         OnRestartGameClicked?.Invoke();
         ComingSoonPanel.SetActive(false);
     }
+    public void OpenComingSoon()
+    {
+        StartCoroutine(DelayPopUp(ComingSoonPanel));
+    }
 
     internal void UpdateScore(int score)
     {
@@ -49,10 +53,14 @@ public class UIManager : MonoBehaviour
 
     internal void OpenLevelFinishMenu()
     {
-        WinPanel.SetActive(true);
+        StartCoroutine(DelayPopUp(WinPanel));
     }
-    public void OpenComingSoon()
+    
+
+    private IEnumerator DelayPopUp(GameObject Popup)
     {
-        ComingSoonPanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Popup.SetActive(true);
+
     }
 }
