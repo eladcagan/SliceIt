@@ -262,6 +262,7 @@ MonoBehaviour:
   _backwardsForce: {x: 0.25, y: 1, z: 0}
   _forwardTorque: {x: 0, y: 0, z: 540}
   _backwardsTorque: {x: 0, y: 0, z: 270}
+  _fixedRotation: {x: 0, y: 0, z: 160}
   _brickBombMultiplier: 3
   _powerUpMultiplier: {x: 1.25, y: 2.5, z: 1.25}
   _powerUpDuration: 0.5

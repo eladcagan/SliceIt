@@ -26,8 +26,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _currentLevelIndex = 0;
         RegisterUIEvents();
+    }
+
+    public void StartGame()
+    {
+        _currentLevelIndex = 0;
         RestartGame();
     }
 

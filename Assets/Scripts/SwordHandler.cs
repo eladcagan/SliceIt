@@ -22,6 +22,8 @@ public class SwordHandler : MonoBehaviour
     [SerializeField]
     private Vector3 _backwardsTorque;
     [SerializeField]
+    private Vector3 _fixedRotation;
+    [SerializeField]
     private float _brickBombMultiplier;
     [SerializeField]
     private Vector3 _powerUpMultiplier;
@@ -41,7 +43,6 @@ public class SwordHandler : MonoBehaviour
     public Action<bool> OnPowerupHit;
     public Action<int> OnBladeCut;
     public Action<int> OnBladeFinish;
-    
 
     private void Awake()
     {
@@ -100,9 +101,11 @@ public class SwordHandler : MonoBehaviour
                 OnFinishLineHit(collider);
                 break;
             default:
-                _rigidbody.isKinematic = true;
                 _rigidbody.velocity = Vector3.zero;
                 _rigidbody.angularVelocity = Vector3.zero;
+                _rigidbody.isKinematic = true;
+                //transform.rotation = Quaternion.Euler(_fixedRotation);
+                //transform.position = new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z);
                 break;
         }
     }

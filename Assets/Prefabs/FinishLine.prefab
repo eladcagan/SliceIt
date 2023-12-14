@@ -169,15 +169,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: x 50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
+  m_sharedMaterial: {fileID: 6381754335797235923, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283111692
+  m_fontColor: {r: 0.048282295, g: 0.09706437, b: 0.2924528, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -304,15 +304,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: x 50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
+  m_sharedMaterial: {fileID: 6381754335797235923, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283111692
+  m_fontColor: {r: 0.048282295, g: 0.09706437, b: 0.2924528, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -499,9 +499,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549794655183221325}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3.389, z: 0}
-  m_LocalScale: {x: 1, y: 0.15, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3.43, z: 0}
+  m_LocalScale: {x: 1, y: 0.21999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1549794655147568491}
@@ -613,8 +613,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549794655682076632}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.466, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 8.54, z: 0}
+  m_LocalScale: {x: 1, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1549794654782670823}
@@ -968,15 +968,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: x 50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
+  m_sharedMaterial: {fileID: 6381754335797235923, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283111692
+  m_fontColor: {r: 0.048282295, g: 0.09706437, b: 0.2924528, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1216,15 +1216,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: x 50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
+  m_sharedMaterial: {fileID: 6381754335797235923, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283111692
+  m_fontColor: {r: 0.048282295, g: 0.09706437, b: 0.2924528, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1577,15 +1577,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: x 50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
+  m_sharedMaterial: {fileID: 6381754335797235923, guid: 809d0f59e43cb424182725fe7effa42c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283111692
+  m_fontColor: {r: 0.048282295, g: 0.09706437, b: 0.2924528, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1789,29 +1789,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1549794656605502292}
     m_Modifications:
-    - target: {fileID: 2987464022237788987, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.01
+    - target: {fileID: 4429294268588134620, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.2924528
       objectReference: {fileID: 0}
     - target: {fileID: 4429294268588134620, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
-      propertyPath: m_text
-      value: x 50
+      propertyPath: m_fontColor.g
+      value: 0.09706437
       objectReference: {fileID: 0}
     - target: {fileID: 4429294268588134620, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
-      propertyPath: m_fontSize
-      value: 18
+      propertyPath: m_fontColor.r
+      value: 0.048282295
       objectReference: {fileID: 0}
     - target: {fileID: 4429294268588134620, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
-      propertyPath: m_enableWordWrapping
-      value: 0
+      propertyPath: m_fontColor32.rgba
+      value: 4283111692
       objectReference: {fileID: 0}
     - target: {fileID: 4908765299156583437, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
       propertyPath: m_Name
       value: FinishLineBrick
-      objectReference: {fileID: 0}
-    - target: {fileID: 4908765299156583437, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
-      propertyPath: m_TagString
-      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 5215656963321852981, guid: 8a2216015c8da4248bf548eda0321331, type: 3}
       propertyPath: m_RootOrder
