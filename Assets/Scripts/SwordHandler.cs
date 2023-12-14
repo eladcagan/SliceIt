@@ -32,9 +32,13 @@ public class SwordHandler : MonoBehaviour
         private get;
     }
 
+    public Action OnSwordMove;
+    public Action OnBladeHitGround;
+    public Action OnBombHit;
+    public Action<bool> OnPowerupHit;
     public Action<int> OnBladeCut;
     public Action<int> OnBladeFinish;
-    public Action OnBladeHitGround;
+    
 
     private void Awake()
     {
@@ -66,43 +70,56 @@ public class SwordHandler : MonoBehaviour
         switch (tag)
         {
             case Constants.CUTTABLE:
-                _rigidbody.isKinematic = false;
-                _rigidbody.angularVelocity = Vector3.zero;
                 var cuttable = collider.GetComponent<CuttableObject>();
-                if (cuttable != null)
-                {
-                    var score = cuttable.CutValue;
-                    OnBladeCut?.Invoke(score);
-                }
-
+                OnCuttableHit(cuttable);
                 break;
             case Constants.GROUND:
                 OnGroundHit();
                 break;
             case Constants.BOMB:
+                OnBombHit?.Invoke();
                 Move(0);
                 break;
             case Constants.POWERUP:
-                HandlePowerUp(_powerUpMultiplier);
+                HandlePowerUp(_powerUpMultiplier, true);
                 break;
             case Constants.BADPOWERUP:
-                HandlePowerUp(1/_powerUpMultiplier);
+                HandlePowerUp(1/_powerUpMultiplier, false);
                 break;
             case Constants.FINISH:
-                _rigidbody.isKinematic = true;
-                var multiplier = collider.GetComponent<Finish>().Multiplier;
-                OnBladeFinish?.Invoke(multiplier);
+                OnFinishLineHit(collider);
                 break;
             default:
                 _rigidbody.isKinematic = true;
+                _rigidbody.velocity = Vector3.zero;
                 _rigidbody.angularVelocity = Vector3.zero;
                 break;
         }
     }
 
-    private void HandlePowerUp(float powerUpMultiplier)
+    private void OnFinishLineHit(Collider collider)
+    {
+        _rigidbody.isKinematic = true;
+        var multiplier = collider.GetComponent<Finish>().Multiplier;
+        OnBladeFinish?.Invoke(multiplier);
+    }
+
+    private void OnCuttableHit(CuttableObject cuttable)
+    {
+        _rigidbody.isKinematic = false;
+        _rigidbody.angularVelocity = Vector3.zero;
+        
+        if (cuttable != null)
+        {
+            var score = cuttable.CutValue;
+            OnBladeCut?.Invoke(score);
+        }
+    }
+
+    private void HandlePowerUp(float powerUpMultiplier, bool isGood)
     {
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * powerUpMultiplier, transform.localScale.z);
+        OnPowerupHit?.Invoke(isGood);
     }
 
     private void OnGroundHit()
@@ -127,6 +144,7 @@ public class SwordHandler : MonoBehaviour
 
     private void Move(int direction)
     {
+        OnSwordMove?.Invoke();
         Vector3 force = Vector3.zero;
         Vector3 torque = Vector3.zero;
 

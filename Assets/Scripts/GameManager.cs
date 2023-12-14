@@ -2,11 +2,14 @@ using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private UIManager _uiManager;
+    [SerializeField]
+    private SoundManager _soundManager;
     [SerializeField]
     private CinemachineVirtualCamera _cmCamera;
     [SerializeField]
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         _currentLevelIndex = 0;
         _playerScore = 0;
+        _uiManager.UpdateScore(_playerScore);
         RestartLevel();
     }
 
@@ -81,11 +85,24 @@ public class GameManager : MonoBehaviour
         _sword.gameState = GameStates.InProgress;
     }
 
+    private void OnSwordMove()
+    {
+        _soundManager.OnSwordMove();
+    }
+
+    private void OnBladeCut(int score)
+    {
+        _playerScore += score;
+        _uiManager.UpdateScore(_playerScore);
+        _soundManager.OnCuttableHit();
+    }
+
     private void OnBladeFinish(int multiplier)
     {
         _sword.gameState = GameStates.LevelEnd;
         _playerScore *= multiplier;
         _uiManager.UpdateScore(_playerScore);
+        _soundManager.OnFinishLineHit();
         if (_currentLevelIndex + 1 < _levels.Count)
         {
             LevelFinished();
@@ -98,7 +115,25 @@ public class GameManager : MonoBehaviour
 
     private void OnBladeHitGround()
     {
+        _soundManager.OnGroundHit();
         Lose();
+    }
+
+    private void OnPowerupHit(bool isGood)
+    {
+        if(isGood)
+        {
+            _soundManager.OnPowerUpHit();
+        }
+        else
+        {
+            _soundManager.OnBadPowerUpHit();
+        }
+    }
+
+    private void OnBombHit()
+    {
+        _soundManager.OnBombHit();
     }
 
     private void LevelFinished()
@@ -117,23 +152,25 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenGameOverMenu();
     }
 
-    private void OnBladeCut(int score)
-    {
-        _playerScore += score;
-        _uiManager.UpdateScore(_playerScore);
-    }
-
     private void RegisterSwordEvents()
     {
         _sword.OnBladeCut += OnBladeCut;
         _sword.OnBladeFinish += OnBladeFinish;
         _sword.OnBladeHitGround += OnBladeHitGround;
+        _sword.OnBombHit += OnBombHit;
+        _sword.OnPowerupHit += OnPowerupHit;
+        _sword.OnSwordMove += OnSwordMove;
     }
+
+   
 
     private void UnregisterSwordEvents()
     {
         _sword.OnBladeCut -= OnBladeCut;
         _sword.OnBladeFinish -= OnBladeFinish;
         _sword.OnBladeHitGround -= OnBladeHitGround;
+        _sword.OnBombHit += OnBombHit;
+        _sword.OnPowerupHit += OnPowerupHit;
+        _sword.OnSwordMove -= OnSwordMove;
     }
 }
