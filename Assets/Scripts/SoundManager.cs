@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip _bombSFX;
     [SerializeField]
+    private AudioClip _hiltSFX;
+    [SerializeField]
     private AudioClip _powerupSFX;
     [SerializeField]
     private AudioClip _badPowerupSFX;
@@ -55,6 +57,13 @@ public class SoundManager : MonoBehaviour
     {
         _source.Stop();
         _source.clip = _bombSFX;
+        _source.Play();
+    }
+
+    public void OnHiltHit()
+    {
+        _source.Stop();
+        _source.clip = _hiltSFX;
         _source.Play();
     }
 

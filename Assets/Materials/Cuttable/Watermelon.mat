@@ -11,9 +11,9 @@ Material:
   m_Shader: {fileID: 4800000, guid: 74e6a0629ff62134ab27b220e3a687f9, type: 3}
   m_ValidKeywords:
   - TCP2_DISABLE_WRAPPED_LIGHT
-  - TCP2_UV2_AS_NORMALS
   m_InvalidKeywords:
   - OUTLINES
+  - TCP2_UV2_AS_NORMALS
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -82,7 +82,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 2
+    - _Outline: 0.05
     - _Parallax: 0.02
     - _RampSmooth: 0.2
     - _RampSmoothAdd: 0.2

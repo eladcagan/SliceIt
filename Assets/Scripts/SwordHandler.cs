@@ -36,6 +36,7 @@ public class SwordHandler : MonoBehaviour
 
     public Action OnSwordMove;
     public Action OnBladeHitGround;
+    public Action OnHiltHit;
     public Action OnBombHit;
     public Action<bool> OnPowerupHit;
     public Action<int> OnBladeCut;
@@ -45,10 +46,10 @@ public class SwordHandler : MonoBehaviour
     private void Awake()
     {
         _blade.OnBladeHit += OnBladeHit;
-        _hilt.OnHiltHit += OnHiltHit;
+        _hilt.OnHiltHit += HandleHiltHit;
     }
 
-    private void OnHiltHit(string tag)
+    private void HandleHiltHit(string tag)
     {
         if (tag.Equals(Constants.GROUND))
         {
@@ -58,6 +59,7 @@ public class SwordHandler : MonoBehaviour
         {
             _rigidbody.isKinematic = false;
             Move(-1);
+            OnHiltHit?.Invoke();
         }
     }
 
@@ -79,8 +81,8 @@ public class SwordHandler : MonoBehaviour
                 OnGroundHit();
                 break;
             case Constants.BOMB:
-                OnBombHit?.Invoke();
                 Move(0);
+                OnBombHit?.Invoke();
                 break;
             case Constants.POWERUP:
                 HandlePowerUp(_powerUpMultiplier, true);

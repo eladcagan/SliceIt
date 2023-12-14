@@ -10443,6 +10443,7 @@ MonoBehaviour:
   _cutSFX: {fileID: 8300000, guid: a32a395a2f371bf49a177a47c5ec0030, type: 3}
   _groundSFX: {fileID: 8300000, guid: 95c975bd59214384488203f4728202bc, type: 3}
   _bombSFX: {fileID: 8300000, guid: 8241c04874ba5e54f87c4ed01895a629, type: 3}
+  _hiltSFX: {fileID: 8300000, guid: fbbba9738477f444ea5ea159b558f4bb, type: 3}
   _powerupSFX: {fileID: 8300000, guid: 4523914b99aaadb4a81653d987e2dd63, type: 3}
   _badPowerupSFX: {fileID: 8300000, guid: 4523914b99aaadb4a81653d987e2dd63, type: 3}
   _FinishLineSFX: {fileID: 8300000, guid: a8e5fc8c015608c4d9658f22c8308bde, type: 3}

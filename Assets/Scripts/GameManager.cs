@@ -131,6 +131,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnHiltHit()
+    {
+        _soundManager.OnHiltHit();
+    }
+
     private void OnBombHit()
     {
         _soundManager.OnBombHit();
@@ -160,9 +165,10 @@ public class GameManager : MonoBehaviour
         _sword.OnBombHit += OnBombHit;
         _sword.OnPowerupHit += OnPowerupHit;
         _sword.OnSwordMove += OnSwordMove;
+        _sword.OnHiltHit += OnHiltHit;
     }
 
-   
+    
 
     private void UnregisterSwordEvents()
     {
