@@ -29,6 +29,8 @@ public class SwordHandler : MonoBehaviour
     private Vector3 _powerUpMultiplier;
     [SerializeField]
     private float _powerUpDuration;
+    [SerializeField]
+    private float _bounceOffset;
     [HideInInspector]
     public GameStates gameState
     {
@@ -104,8 +106,7 @@ public class SwordHandler : MonoBehaviour
                 _rigidbody.velocity = Vector3.zero;
                 _rigidbody.angularVelocity = Vector3.zero;
                 _rigidbody.isKinematic = true;
-                //transform.rotation = Quaternion.Euler(_fixedRotation);
-                //transform.position = new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y + _bounceOffset, transform.position.z);
                 break;
         }
     }

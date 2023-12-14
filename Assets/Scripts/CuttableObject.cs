@@ -47,11 +47,6 @@ public class CuttableObject : MonoBehaviour
                     StartCoroutine(TextDelay(0.75f));
                 }
                 part.AddExplosionForce(_cutForce, part.position, 1);
-                var collider = part.GetComponent<Collider>();
-                if(collider != null)
-                {
-                    StartCoroutine(TagDelay(collider, 0.75f));
-                }
             }
         }
     }
@@ -62,9 +57,4 @@ public class CuttableObject : MonoBehaviour
         _scoreText.gameObject.SetActive(false);
     }
 
-    private IEnumerator TagDelay(Collider col, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        //col.tag = "Untagged";
-    }
 }
