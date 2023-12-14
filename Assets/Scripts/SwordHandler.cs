@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Enums;
+using System.Collections;
 
 public class SwordHandler : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SwordHandler : MonoBehaviour
     private Vector3 _forwardTorque;
     [SerializeField]
     private Vector3 _backwardsTorque;
+    [SerializeField]
+    private float _brickBombMultiplier;
     [HideInInspector]
     public GameStates gameState
     {
@@ -74,6 +77,10 @@ public class SwordHandler : MonoBehaviour
             case Constants.GROUND:
                 OnGroundHit();
                 break;
+            case Constants.BOMB:
+                Move(0);
+                Rotate(0);
+                break;
             case Constants.FINISH:
                 _rigidbody.isKinematic = true;
                 var multiplier = collider.GetComponent<Finish>().Multiplier;
@@ -94,7 +101,7 @@ public class SwordHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(gameState != GameStates.InProgress)
+        if (gameState != GameStates.InProgress)
         {
             return;
         }
@@ -109,14 +116,38 @@ public class SwordHandler : MonoBehaviour
 
     private void Move(int direction)
     {
-        Vector3 force = direction == 1 ? _forwardForce : _backwardsForce;
+        Vector3 force = Vector3.zero;
+        switch (direction)
+        {
+            case -1:
+                force = _backwardsForce;
+                break;
+            case 0:
+                force = _backwardsForce * 3;
+                break;
+            case 1:
+                force = _forwardForce;
+                break;
+        }
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(force, ForceMode.Impulse);
     }
 
     private void Rotate(int direction)
     {
-        Vector3 torque = direction == 1 ? _forwardTorque : _backwardsTorque;
+        Vector3 torque = Vector3.zero;
+        switch (direction)
+        {
+            case -1:
+                torque = _backwardsTorque;
+                break;
+            case 0:
+                torque = _backwardsTorque * _brickBombMultiplier;
+                break;
+            case 1:
+                torque = _forwardTorque;
+                break;
+        }
         _rigidbody.angularVelocity = Vector3.zero;
         _rigidbody.AddTorque(torque, ForceMode.Acceleration);
     }
