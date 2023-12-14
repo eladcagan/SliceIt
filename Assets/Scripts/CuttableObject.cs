@@ -12,6 +12,8 @@ public class CuttableObject : MonoBehaviour
     private TextMeshProUGUI _scoreText;
     [SerializeField]
     private float _cutForce;
+    [SerializeField]
+    private float _textDelay = 1f;
 
     private Rigidbody[] _rigidbodies;
     private Collider _collider;
@@ -44,7 +46,7 @@ public class CuttableObject : MonoBehaviour
                 if (_cutValue > 0)
                 {
                     _scoreText.text = "+" + _cutValue.ToString();
-                    StartCoroutine(TextDelay(0.75f));
+                    StartCoroutine(TextDelay(_textDelay));
                 }
                 part.AddExplosionForce(_cutForce, part.position, 1);
             }
