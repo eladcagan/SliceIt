@@ -438,7 +438,7 @@ MonoBehaviour:
   _cutValue: 10
   _cutPS: {fileID: 5543974463196749409}
   _scoreText: {fileID: 7641945955266372596}
-  _cutForce: 1
+  _cutForce: 100
 --- !u!64 &3820727908765491693
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -107,7 +107,7 @@ MonoBehaviour:
   _cutValue: 100
   _cutPS: {fileID: 5380333429260612820}
   _scoreText: {fileID: 6081174298363157297}
-  _cutForce: 1
+  _cutForce: 100
 --- !u!64 &1902941524855991278
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -643,8 +643,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.a
       value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
@@ -655,8 +663,16 @@ PrefabInstance:
       value: 0.93333334
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.a
       value: 0.93333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
       propertyPath: m_Materials.Array.size

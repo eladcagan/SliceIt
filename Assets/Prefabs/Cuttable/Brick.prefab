@@ -148,7 +148,7 @@ MonoBehaviour:
   _cutValue: 1
   _cutPS: {fileID: 2991956863984254778}
   _scoreText: {fileID: 2856314623335681851}
-  _cutForce: 400
+  _cutForce: 1000
 --- !u!1 &6045707839620466867
 GameObject:
   m_ObjectHideFlags: 0

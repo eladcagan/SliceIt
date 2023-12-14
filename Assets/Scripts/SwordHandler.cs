@@ -24,7 +24,9 @@ public class SwordHandler : MonoBehaviour
     [SerializeField]
     private float _brickBombMultiplier;
     [SerializeField]
-    private float _powerUpMultiplier;
+    private Vector3 _powerUpMultiplier;
+    [SerializeField]
+    private float _powerUpDuration;
     [HideInInspector]
     public GameStates gameState
     {
@@ -84,7 +86,8 @@ public class SwordHandler : MonoBehaviour
                 HandlePowerUp(_powerUpMultiplier, true);
                 break;
             case Constants.BADPOWERUP:
-                HandlePowerUp(1/_powerUpMultiplier, false);
+                var badPowerup = new Vector3(1 / _powerUpMultiplier.x, 1 / _powerUpMultiplier.y, 1 / _powerUpMultiplier.z);
+                HandlePowerUp(badPowerup, false);
                 break;
             case Constants.FINISH:
                 OnFinishLineHit(collider);
@@ -116,9 +119,9 @@ public class SwordHandler : MonoBehaviour
         }
     }
 
-    private void HandlePowerUp(float powerUpMultiplier, bool isGood)
+    private void HandlePowerUp(Vector3 powerUpMultiplier, bool isGood)
     {
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * powerUpMultiplier, transform.localScale.z);
+        StartCoroutine(ChangeSize(powerUpMultiplier));
         OnPowerupHit?.Invoke(isGood);
     }
 
@@ -168,4 +171,20 @@ public class SwordHandler : MonoBehaviour
         _rigidbody.angularVelocity = Vector3.zero;
         _rigidbody.AddTorque(torque, ForceMode.Acceleration);
     }
+
+    private IEnumerator ChangeSize(Vector3 sizeChange)
+    {
+        Vector3 initialScale = transform.localScale;
+        Vector3 target = new Vector3(initialScale.x * sizeChange.x, initialScale.y * sizeChange.y, initialScale.z * sizeChange.z);
+
+        for (float time = 0; time < _powerUpDuration ; time += Time.deltaTime)
+        {
+            float progress = time/ _powerUpDuration;
+            transform.localScale = Vector3.Lerp(initialScale, target, progress);
+            yield return null;
+        }
+
+        transform.localScale = target;
+    }
 }
+

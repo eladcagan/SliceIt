@@ -2,8 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class CuttableObject
-    : MonoBehaviour
+public class CuttableObject : MonoBehaviour
 {
     [SerializeField]
     private int _cutValue;
@@ -11,6 +10,11 @@ public class CuttableObject
     private ParticleSystem _cutPS;
     [SerializeField]
     private TextMeshProUGUI _scoreText;
+    [SerializeField]
+    private float _cutForce;
+
+    private Rigidbody[] _rigidbodies;
+    private Collider _collider;
 
     public int CutValue
     {
@@ -20,10 +24,7 @@ public class CuttableObject
         }
     }
 
-    [SerializeField]
-    private float _cutForce;
-    private Rigidbody[] _rigidbodies;
-    private Collider _collider;
+  
 
     private void Awake()
     {
@@ -46,6 +47,11 @@ public class CuttableObject
                     StartCoroutine(TextDelay(0.75f));
                 }
                 part.AddExplosionForce(_cutForce, part.position, 1);
+                var collider = part.GetComponent<Collider>();
+                if(collider != null)
+                {
+                    StartCoroutine(TagDelay(collider, 0.75f));
+                }
             }
         }
     }
@@ -54,5 +60,11 @@ public class CuttableObject
     {
         yield return new WaitForSeconds(delay);
         _scoreText.gameObject.SetActive(false);
+    }
+
+    private IEnumerator TagDelay(Collider col, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        col.tag = "Untagged";
     }
 }
